@@ -1,0 +1,27 @@
+{
+    "name": "ReactTestApps",
+    "version": "1.0.0",
+    "keywords": [
+        "util",
+        "functional",
+        "server",
+        "client",
+        "browser"
+    ],
+    "author": "rajesh",
+    "contributors": [
+    ],
+    "scripts": {
+        "start": "webpack-dev-server --hot"
+    },
+    "dependencies": {
+        "react": "",
+        "react-dom": "",
+        "webpack": "",
+        "webpack-dev-server": "",
+        "babel-core": "",
+        "babel-loader": "",
+        "babel-preset-react": "",
+        "babel-preset-es2015": ""
+    }
+}

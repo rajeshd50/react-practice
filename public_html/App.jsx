@@ -37,14 +37,7 @@ class App extends React.Component {
       return (
          <div>
             <Header/>
-            <table>
-            	<thead>
-            		<tr><th>ID</th><th>Name</th><th>Age</th></tr>
-            	</thead>
-            	<tbody>
-            		{this.state.data.map((person,i) => <TableRow key={i} data={person}/> )}
-            	</tbody>
-            </table>
+            <Content data={this.state.data}/>
          </div>
       );
    }
@@ -56,6 +49,21 @@ class Header extends React.Component {
          <div>
             <h1>Header</h1>
          </div>
+      );
+   }
+}
+
+class Content extends React.Component {
+   render() {
+      return (
+         <table>
+            <thead>
+               <tr><th>ID</th><th>Name</th><th>Age</th></tr>
+            </thead>
+            <tbody>
+               {this.props.data.map((person,i) => <TableRow key={i} data={person}/> )}
+            </tbody>
+         </table>
       );
    }
 }

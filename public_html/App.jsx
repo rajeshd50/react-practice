@@ -8,66 +8,47 @@
 import React from 'react';
 
 class App extends React.Component {
-   constructor() {
-   	super();
-   	this.state = {
-         data: 
-         [
-            {
-               "id":1,
-               "name":"Foo",
-               "age":"20"
-            },
-				
-            {
-               "id":2,
-               "name":"Bar",
-               "age":"30"
-            },
-				
-            {
-               "id":3,
-               "name":"Baz",
-               "age":"40"
-            }
-         ]
-      }
-   }
    render() {
       return (
          <div>
-            <Header/>
-            <table>
-            	<thead>
-            		<tr><th>ID</th><th>Name</th><th>Age</th></tr>
-            	</thead>
-            	<tbody>
-            		{this.state.data.map((person,i) => <TableRow key={i} data={person}/> )}
-            	</tbody>
-            </table>
+            <Header data={this.props.header} />
+            <Content data={this.props.content} funClick={this.props.testFun}/>
          </div>
       );
    }
+}
+
+App.propTypes = {
+   "header": React.PropTypes.string,
+   "content": React.PropTypes.string,
+   "testFun": React.PropTypes.func,
+   "testBool": React.PropTypes.bool.isRequired
+}
+
+App.defaultProps = {
+   "header": "This is header",
+   "content": "This is content",
+   "testFun": function(){console.log('From fun!!')},
+   "testBool": false
 }
 
 class Header extends React.Component {
    render() {
       return (
          <div>
-            <h1>Header</h1>
+            <h1>{this.props.data}</h1>
          </div>
       );
    }
 }
 
-class TableRow extends React.Component {
+class Content extends React.Component {
    render() {
       return (
-         <tr>
-            <td>{this.props.data.id}</td>
-            <td>{this.props.data.name}</td>
-            <td>{this.props.data.age}</td>
-         </tr>
+         <div>
+            <p>{this.props.data}</p>
+            <button onClick={this.props.funClick}>Click me!</button>
+         </div>
       );
    }
 }
